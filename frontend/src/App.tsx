@@ -1,7 +1,7 @@
 import { GlobalStyle } from './shared/themes/globalStyle';
-import { ThemeProvider } from 'styled-components';
-import { MaterialTheme } from './shared/themes/materialTheme';
+import { createTheme, Theme, ThemeProvider } from '@mui/material/styles';
 import styled from 'styled-components';
+import './shared/themes/materialStyles.css';
 
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Crud from './pages/Crud';
@@ -11,6 +11,25 @@ import Tickets from './pages/Tickets';
 import Home from './pages/Home';
 
 import { BrowserRouter } from 'react-router-dom';
+
+const MaterialTheme = createTheme({
+  palette: {
+    primary: {
+      main: "#290134",
+      dark: "#19021e",
+      light: "#8407a0",
+      contrastText: "#f7d4ff"
+    }
+  },
+  typography: {
+    fontFamily: `'Josefin Sans', 'Roboto', sans-serif`,
+    fontSize: 16,
+    fontWeightBold: 700,
+    allVariants: {
+      color: "#19021e"
+    },
+  }
+});
 
 const routes = [
   {

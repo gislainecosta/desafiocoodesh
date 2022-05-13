@@ -3,7 +3,9 @@ import styled from 'styled-components';
 export const Home = styled.div`
   color: var(--violet-dark);
   text-align: center;
-  padding: 0 2%;
+  width: 100%;
+  height: 100vh;
+  padding: 4%;
   background-color: var(--violet-light);
   background-image: linear-gradient(to left top, #760092, #9746ad, #b776c9, #d6a5e4, #f6d5ff);
 `

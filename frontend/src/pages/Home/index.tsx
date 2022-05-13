@@ -1,9 +1,19 @@
 import { useState } from 'react';
 import * as St from './style';
+import { styled } from '@mui/material/styles';
+import Button, { ButtonProps } from '@mui/material/Button';
+
 import Image from '../../images/ecommerce2.png';
+
 import GitImage from '../../images/github.png';
 import SignIn from '../../shared/components/SignIn';
 import SignUp from '../../shared/components/SignUp';
+
+const LoginButton = styled(Button)({
+  textTransform: 'none',
+  fontSize: 14,
+  padding: '2px 2px',
+});
 
 const Home = () => {
   const [openSignIn, setOpenSignIn] = useState<boolean>(false)
@@ -31,10 +41,13 @@ const Home = () => {
           <St.SignUp onClick={() => handleClickOpen('signup')}>
             Cadastre-se
           </St.SignUp>
-          
-          <St.SignIn onClick={() => handleClickOpen('signin')}>
+
+          <LoginButton
+            variant="contained"
+            onClick={() => handleClickOpen('signin')}
+          >
             Login
-          </St.SignIn>
+          </LoginButton>
         </St.HeaderNav>
       </St.Header>
       

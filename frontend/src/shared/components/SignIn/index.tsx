@@ -1,14 +1,13 @@
-import { MouseEventHandler, useState } from 'react';
+import { MouseEventHandler } from 'react';
+
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
-
 interface Props {
   isOpen: boolean
   handleClose: MouseEventHandler
@@ -58,7 +57,12 @@ export default function SignIn(props:Props) {
         </DialogContent>
         
         <DialogActions>
-          <Button onClick={props.handleClose}>Entrar</Button>
+          <Button 
+            variant="contained" 
+            onClick={props.handleClose}
+          >
+            Entrar
+          </Button>
         </DialogActions>
       </Dialog>
     </div>

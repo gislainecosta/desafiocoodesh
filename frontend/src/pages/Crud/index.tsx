@@ -5,22 +5,6 @@ import Locals from '../Locals';
 import Tickets from '../Tickets';
 import Header from '../../shared/components/Header';
 
-
-// const routes = [
-//   {
-//     path: '/crud/companies',
-//     component: <Companies />
-//   },
-//   {
-//     path: '/crud/locals',
-//     component: <Locals />
-//   },
-//   {
-//     path: '/crud/tickets',
-//     component: <Tickets />
-//   }
-// ];
-
 const Crud = () => {
   return (
     <St.Crud>
