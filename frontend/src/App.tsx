@@ -1,7 +1,10 @@
-import { GlobalStyle } from './globalStyle';
+import { GlobalStyle } from './shared/themes/globalStyle';
+import { ThemeProvider } from 'styled-components';
+import { MaterialTheme } from './shared/themes/materialtheme';
 import styled from 'styled-components';
 
 import Home from './pages/Home';
+
 
 const ContainerApp = styled.div`
   min-height: 100vh;
@@ -16,10 +19,12 @@ const ContainerApp = styled.div`
 
 function App() {
   return (
-    <ContainerApp>
-      <GlobalStyle />
-      <Home />
-    </ContainerApp>
+    <ThemeProvider theme={MaterialTheme}>
+      <ContainerApp>
+        <GlobalStyle />
+        <Home />
+      </ContainerApp>
+    </ThemeProvider>
   )
 }
 

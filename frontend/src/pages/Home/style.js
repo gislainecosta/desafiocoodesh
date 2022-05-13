@@ -39,3 +39,12 @@ export const SignIn = styled.button`
   padding: 4% 6%;
   border-radius: 10px;
 `
+export const Modal = styled.section`
+  z-index: 2;
+  position: fixed;
+  top: 10%;
+  right: 6%;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+`
