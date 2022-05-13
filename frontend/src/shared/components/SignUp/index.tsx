@@ -14,9 +14,7 @@ interface Props {
   handleClose: MouseEventHandler
 }
 
-export default function SignUp(props: Props) {
-  console.log("Cadastro Está aberto??", props.isOpen)
-  
+export default function SignUp(props: Props) {  
   return (
     <div>
       <Dialog open={props.isOpen}>

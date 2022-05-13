@@ -15,7 +15,6 @@ interface Props {
 }
 
 export default function SignIn(props:Props) {
-  console.log("Login Está aberto??", props.isOpen)
   return (
     <div>
       <Dialog open={props.isOpen}>

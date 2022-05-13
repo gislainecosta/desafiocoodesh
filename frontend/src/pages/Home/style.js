@@ -4,6 +4,8 @@ export const Home = styled.div`
   color: var(--violet-dark);
   text-align: center;
   padding: 0 2%;
+  background-color: var(--violet-light);
+  background-image: linear-gradient(to left top, #760092, #9746ad, #b776c9, #d6a5e4, #f6d5ff);
 `
 export const Image = styled.img`
   width: 90vw;
