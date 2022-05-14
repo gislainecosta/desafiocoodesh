@@ -3,6 +3,7 @@ import * as St from './style';
 import FormLocal from '../../shared/components/FormLocals';
 
 import Paper from '@mui/material/Paper';
+import TableLocal from '../../shared/components/TableLocal';
 
 const Locals = () => {
   return (
@@ -24,6 +25,7 @@ const Locals = () => {
       >
         <St.PageTitle>Locais</St.PageTitle>
         <FormLocal />
+        <TableLocal />
       </Paper>
       
     </St.Locals>

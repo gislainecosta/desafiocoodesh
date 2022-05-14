@@ -14,8 +14,6 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 export default function ButtonAppBar() {
   const { width } = useWindowSize();
   
-  console.log('Tamanho da Tela', width)
-  
   return (
     <Box 
     sx={{ width: '100vw' }}>

@@ -32,3 +32,20 @@
 .MuiFormControl-root {
   margin-bottom: 1.4rem !important;
 }
+
+.MuiAccordion-root {
+  box-shadow: none !important;
+  margin-top: 1.4rem !important;
+}
+
+.MuiAccordion-root.Mui-expanded:first-of-type {
+  margin-top: 1.4rem !important;
+}
+
+.MuiAccordionSummary-content.Mui-expanded {
+  margin: 0 !important;
+}
+
+.MuiButtonBase-root-MuiAccordionSummary-root.Mui-expanded {
+  min-height: auto !important;
+}
