@@ -1,17 +1,31 @@
 import * as St from './style';
-import { Routes, Route, Navigate } from 'react-router-dom';
-import Companies from '../Companies';
-import Locals from '../Locals';
-import Tickets from '../Tickets';
 import Header from '../../shared/components/Header';
+import Company from '../../images/company.png';
+import Ticket from '../../images/tickets.png';
+import Local from '../../images/local.png';
 
 const Crud = () => {
   return (
-    <St.Crud>
+    <St.CrudContainer>
       <Header />
-      <p>CRUD</p>
+      
+      <St.Crud>
+        <St.CrudSection>
+          <St.Image src={Company} alt='Empresas'/>
+          <St.Title>Empresas</St.Title>
+        </St.CrudSection>
 
-    </St.Crud>
+        <St.CrudSection>
+          <St.Image src={Local} alt='Locais' />
+          <St.Title>Locais</St.Title>
+        </St.CrudSection>
+
+        <St.CrudSection>
+          <St.Image src={Ticket} alt='Tickets' />
+          <St.Title>Tickets</St.Title>
+        </St.CrudSection>
+      </St.Crud>
+    </St.CrudContainer>
   );
 }
 

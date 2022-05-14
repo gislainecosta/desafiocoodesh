@@ -18,6 +18,7 @@
 
 .MuiToolbar-root {
   justify-content: space-between !important;
+  padding: 1rem !important;
 }
 
 .MuiIconButton-root {
