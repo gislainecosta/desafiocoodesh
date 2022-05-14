@@ -28,3 +28,7 @@
 .MuiSvgIcon-root {
   font-size: 2.4rem !important;
 }
+
+.MuiFormControl-root {
+  margin-bottom: 2rem !important;
+}

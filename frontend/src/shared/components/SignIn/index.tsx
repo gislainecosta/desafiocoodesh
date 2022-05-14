@@ -13,58 +13,56 @@ interface Props {
   handleClose: MouseEventHandler
 }
 
-export default function SignIn(props:Props) {
+export default function SignIn(props: Props) {
   return (
-    <div>
-      <Dialog open={props.isOpen}>
-        <DialogTitle>
-          Login
+    <Dialog open={props.isOpen}>
+      <DialogTitle>
+        Login
 
-          <IconButton
-            aria-label="close"
-            onClick={props.handleClose}
-            sx={{
-              position: 'absolute',
-              right: 8,
-              top: 8,
-              color: (theme) => theme.palette.grey[500],
-            }}
-          >
-            <CloseIcon />
-          </IconButton>
-        </DialogTitle>
-        
-        <DialogContent>
-          <TextField
-            autoFocus
-            margin="dense"
-            id="name"
-            label="e-mail"
-            type="email"
-            fullWidth
-            variant="standard"
-          />
+        <IconButton
+          aria-label="close"
+          onClick={props.handleClose}
+          sx={{
+            position: 'absolute',
+            right: 8,
+            top: 8,
+            color: (theme) => theme.palette.grey[500],
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
+      </DialogTitle>
 
-          <TextField
-            autoFocus
-            margin="dense"
-            id="password"
-            label="senha"
-            type="password"
-            fullWidth
-            variant="standard"
-          />
-        </DialogContent>
-        
-        <DialogActions>
-          <Button 
-            variant="contained" 
-            onClick={props.handleClose}
-          >
-            Entrar
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </div>
+      <DialogContent>
+        <TextField
+          autoFocus
+          margin="dense"
+          id="name"
+          label="e-mail"
+          type="email"
+          fullWidth
+          variant="standard"
+        />
+
+        <TextField
+          autoFocus
+          margin="dense"
+          id="password"
+          label="senha"
+          type="password"
+          fullWidth
+          variant="standard"
+        />
+      </DialogContent>
+
+      <DialogActions>
+        <Button
+          variant="contained"
+          onClick={props.handleClose}
+        >
+          Entrar
+        </Button>
+      </DialogActions>
+    </Dialog>
   );
 }
