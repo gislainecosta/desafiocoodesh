@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import * as St from './style';
 import { styled } from '@mui/material/styles';
-import Button, { ButtonProps } from '@mui/material/Button';
+import Button from '@mui/material/Button';
 
 import Image from '../../images/ecommerce2.png';
 
