@@ -4,7 +4,9 @@ export const GlobalStyle = createGlobalStyle`
   :root {
     --violet: #64057a;
     --violet-dark: #19021e;
-    --violet-light: #e0c4e6;      
+    --violet-light: #e0c4e6;  
+    --text: #460259;
+    --grey: #efeaf3;
   }
 
   * {
@@ -30,6 +32,7 @@ export const GlobalStyle = createGlobalStyle`
     outline: 0;
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 400;
+    color: var(--text);
 
     &:focus {
       outline: none;

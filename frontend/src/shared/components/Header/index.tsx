@@ -1,45 +1,53 @@
-import * as React from 'react';
+import { useState, useEffect } from 'react';
+import { useWindowSize } from "react-use-size";
+
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import AccountCircle from '@mui/icons-material/AccountCircle';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
+import AppsIcon from '@mui/icons-material/Apps';
 import MenuIcon from '@mui/icons-material/Menu';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 export default function ButtonAppBar() {
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
-    
-    setAnchorEl(event.currentTarget);
-  };
-
+  const { width } = useWindowSize();
+  
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box 
+    sx={{ width: '100vw' }}>
       <AppBar position="static">
         <Toolbar>
           <IconButton
             size="large"
-            edge="start"
             color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
+            aria-label="logout"
           >
-            <MenuIcon />
+            <AppsIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Cooesh
-          </Typography>
+          
+          { 
+            width > 768 && 
+              <Typography 
+                variant="body1" 
+                component="div" 
+                sx={{ 
+                  flexGrow: 1,
+                  color: 'primary.contrastText', 
+                  textAlign: 'right',
+                  paddingRight: '2rem'
+                }}>
+                Olá Gislaine
+              </Typography>
+          }
+          
           <IconButton
             size="large"
-            aria-label="account of current user"
-            aria-controls="menu-appbar"
-            aria-haspopup="true"
-            onClick={handleMenu}
             color="inherit"
+            aria-label="logout"
           >
-            <AccountCircle />
+            <ExitToAppIcon />
           </IconButton>
         </Toolbar>
       </AppBar>

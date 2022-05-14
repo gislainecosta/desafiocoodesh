@@ -15,3 +15,37 @@
 .MuiBackdrop-root {
   background-color: rgba(9, 1, 9, 0.85) !important;
 }
+
+.MuiToolbar-root {
+  justify-content: space-between !important;
+  padding: 1rem !important;
+}
+
+.MuiIconButton-root {
+  padding: 0 !important;
+}
+
+.MuiSvgIcon-root {
+  font-size: 2.4rem !important;
+}
+
+.MuiFormControl-root {
+  margin-bottom: 1.4rem !important;
+}
+
+.MuiAccordion-root {
+  box-shadow: none !important;
+  margin-top: 1.4rem !important;
+}
+
+.MuiAccordion-root.Mui-expanded:first-of-type {
+  margin-top: 1.4rem !important;
+}
+
+.MuiAccordionSummary-content.Mui-expanded {
+  margin: 0 !important;
+}
+
+.MuiButtonBase-root-MuiAccordionSummary-root.Mui-expanded {
+  min-height: auto !important;
+}
