@@ -2,7 +2,7 @@ import * as St from './style';
 
 import TextField from '@mui/material/TextField';
 
-export default function formCompany() {
+export default function FormCompany() {
   return (
     <St.Form>
       <St.FormTitle>Criar uma nova empresa</St.FormTitle>
