@@ -1,7 +1,11 @@
 import express from "express";
+import userRouter from "./routes/userRoutes";
 
 const app = express();
-
 app.use(express.json());
 
-app.listen(3003, () => console.log("Server is running in port 3003"));
+app.use("/users", userRouter);
+
+app.listen(3003, () =>
+  console.log("Server is running in http://localhost:3003/")
+);
