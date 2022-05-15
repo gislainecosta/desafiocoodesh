@@ -2,10 +2,15 @@ module.exports = {
   development: {
     client: 'pg',
     connection: {
-      database: 'coodesh',
+      host: 'localhost',
+      database: 'desafiocoodesh',
       user: 'postgres',
       password: 'admin',
       port: 5432
+    },
+    migrations: {
+      tableName: 'knex_migrations',
+      directory: './src/database/migrations'
     }
   }
-};
+}
