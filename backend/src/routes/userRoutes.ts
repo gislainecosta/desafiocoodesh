@@ -1,6 +1,5 @@
 import express from "express";
-import { UserController } from "../controllers/UserControler"
-const knex = require("../database");
+import { UserController } from "../controllers/UserController"
 
 const userRouter = express.Router();
 
