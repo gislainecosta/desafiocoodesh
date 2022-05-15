@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { CompanyReq } from "../Models/Company"
+import { CompanyReq } from "../Models/CompanyModel"
 
 const knex = require("../database");
 
