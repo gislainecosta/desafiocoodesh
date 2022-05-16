@@ -89,6 +89,19 @@ export class UserController {
     next: NextFunction
   ): Promise<any> {
     try {
+      if (
+        !req.body.name ||
+        !req.body.email ||
+        !req.body.address ||
+        !req.body.password ||
+        !req.body.phone
+      ) {
+        throw new Error("Invalid input");
+      }
+      if (req.body.email.indexOf("@") === -1) {
+        throw new Error("Invad email address");
+      }
+
       const { id } = req.params;
 
       const user: UserReq = {

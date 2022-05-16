@@ -33,6 +33,15 @@ export class CompanyController {
     next: NextFunction
   ): Promise<any> {
     try {
+      if (
+        !req.body.company_name ||
+        !req.body.cnpj ||
+        !req.body.company_description ||
+        !req.body.company_admin
+      ) {
+        throw new Error("Invalid input");
+      }
+
       const token = req.headers.authorization as string;
       const authenticator = new Authenticator();
       const authenticationData = authenticator.getData(token);
@@ -69,6 +78,15 @@ export class CompanyController {
     next: NextFunction
   ): Promise<any> {
     try {
+      if (
+        !req.body.company_name ||
+        !req.body.cnpj ||
+        !req.body.company_description ||
+        !req.body.company_admin
+      ) {
+        throw new Error("Invalid input");
+      }
+      
       const { id } = req.params
 
       const token = req.headers.authorization as string;
