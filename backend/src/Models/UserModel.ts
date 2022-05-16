@@ -1,8 +1,15 @@
 interface UserReq {
   name: string;
-  address: string
+  email: string;
+  address: string;
   phone: string;
+  password: string;
+}
+
+interface UserLogin {
+  email: string;
+  password: string;
 }
 
 
-export { UserReq };
+export { UserReq, UserLogin };
