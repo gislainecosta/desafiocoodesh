@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import { CompanyReq } from "../Models/CompanyModel"
+import { CompanyReq } from "../Models/CompanyModel";
+import Authenticator from "../services/Authenticator.class";
 
 const knex = require("../database");
 
@@ -10,6 +11,15 @@ export class CompanyController {
     next: NextFunction
   ): Promise<any> {
     try {
+      const token = req.headers.authorization as string;
+      const authenticator = new Authenticator();
+      const authenticationData = authenticator.getData(token);
+      const userId = { id: authenticationData.id };
+
+      if (!userId.id) {
+        res.status(400).send({ message: "Insira um Token Válido" });
+      }
+
       const results = await knex("companies");
       return res.json(results);
     } catch (e: any) {
@@ -23,6 +33,15 @@ export class CompanyController {
     next: NextFunction
   ): Promise<any> {
     try {
+      const token = req.headers.authorization as string;
+      const authenticator = new Authenticator();
+      const authenticationData = authenticator.getData(token);
+      const userId = { id: authenticationData.id };
+
+      if (!userId.id) {
+        res.status(400).send({ message: "Insira um Token Válido" });
+      }
+
       const company: CompanyReq = {
         company_name: req.body.company_name,
         cnpj: req.body.cnpj,
@@ -51,6 +70,15 @@ export class CompanyController {
   ): Promise<any> {
     try {
       const { id } = req.params
+
+      const token = req.headers.authorization as string;
+      const authenticator = new Authenticator();
+      const authenticationData = authenticator.getData(token);
+      const userId = { id: authenticationData.id };
+
+      if (!userId.id) {
+        res.status(400).send({ message: "Insira um Token Válido" });
+      }
       
       const company: CompanyReq = {
         company_name: req.body.company_name,
@@ -80,6 +108,14 @@ export class CompanyController {
     try {
       const { id } = req.params;
       
+      const token = req.headers.authorization as string;
+      const authenticator = new Authenticator();
+      const authenticationData = authenticator.getData(token);
+      const userId = { id: authenticationData.id };
+
+      if (!userId.id) {
+        res.status(400).send({ message: "Insira um Token Válido" });
+      }
       await knex("companies")
       .where({ id })
       .del()
