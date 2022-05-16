@@ -1,25 +1,22 @@
 exports.up = function (knex) {
   return knex.schema
-    .createTable('accountables', table => {
-      table.increments('id').primary()
+    .createTable('users', table => {
+      table.uuid('id').primary().unique().notNullable()
       table.string('name', 255).unique().notNullable()
-      table.text('address').unique().notNullable()
+      table.string('email', 255).unique().notNullable()
+      table.text('address').notNullable()
       table.text('phone').unique().notNullable()
+      table.text('password',).unique().notNullable()
     })
     .createTable('companies', table => {
       table.increments('id').primary()
       table.string('company_name', 255).unique().notNullable()
       table.string('cnpj', 255).unique().notNullable()
       table.text('company_description').unique().notNullable()
-      table.integer('company_admin')
-        .references('accountables.id')
+      table.uuid('company_admin')
+        .references('users.id')
         .onDelete('CASCADE')
         .notNullable()
-    })
-    .createTable('users', table => {
-      table.uuid('id').primary().unique().notNullable()
-      table.string('username', 255).unique().notNullable()
-      table.text('password',).unique().notNullable()
     })
     .createTable('locals', table => {
       table.uuid('id').primary()
@@ -31,12 +28,12 @@ exports.up = function (knex) {
         .onDelete('CASCADE')
         .notNullable()
 
-      table.integer('admin_id')
-        .references('accountables.id')
+      table.uuid('admin_id')
+        .references('users.id')
         .onDelete('CASCADE')
         .notNullable()
     })
-    .createTable('company_accountable', table => {
+    .createTable('company_user', table => {
       table.increments('id').primary()
 
       table.integer('company_id')
@@ -44,12 +41,12 @@ exports.up = function (knex) {
         .onDelete('CASCADE')
         .notNullable()
 
-      table.integer('accountable_id')
-        .references('accountables.id')
+      table.uuid('user_id')
+        .references('users.id')
         .onDelete('CASCADE')
         .notNullable()
     })
-    .createTable('local_accountable', table => {
+    .createTable('local_user', table => {
       table.increments('id').primary()
 
       table.uuid('local_id')
@@ -57,8 +54,8 @@ exports.up = function (knex) {
         .onDelete('CASCADE')
         .notNullable()
 
-      table.integer('accountable_id')
-        .references('accountables.id')
+      table.uuid('user_id')
+        .references('users.id')
         .onDelete('CASCADE')
         .notNullable()
     })
@@ -96,8 +93,8 @@ exports.up = function (knex) {
         .references('companies.id')
         .onDelete('CASCADE')
         .notNullable()
-      table.integer('local_admin')
-        .references('accountables.id')
+      table.uuid('local_admin')
+        .references('users.id')
         .onDelete('CASCADE')
         .notNullable()
     })
@@ -105,11 +102,10 @@ exports.up = function (knex) {
 
 exports.down = function (knex) {
   return knex.schema
-    .dropTable('accountables')
     .dropTable('companies')
     .dropTable('users')
     .dropTable('locals')
-    .dropTable('company_accountable')
-    .dropTable('local_accountable')
+    .dropTable('company_user')
+    .dropTable('local_user')
     .dropTable('tickets')
 }

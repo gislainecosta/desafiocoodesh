@@ -38,7 +38,7 @@ export class CompanyController {
         company_admin: company.company_admin,
       });
 
-      res.status(200).send("Empresa criada com sucesso!");
+      return res.status(200).send("Empresa criada com sucesso!");
     } catch (e: any) {
       next(e);
     }
@@ -66,7 +66,7 @@ export class CompanyController {
         company_description: company.company_description,
         company_admin: company.company_admin,
       }).where({ id })
-      res.status(200).send("Empresa atualizada com sucesso!");
+      return res.status(200).send("Empresa atualizada com sucesso!");
     } catch (e: any) {
       next(e);
     }
@@ -84,7 +84,7 @@ export class CompanyController {
       .where({ id })
       .del()
 
-      res.status(200).send("Empresa deletada com sucesso!");
+      return res.status(200).send("Empresa deletada com sucesso!");
     } catch (e: any) {
       next(e);
     }
