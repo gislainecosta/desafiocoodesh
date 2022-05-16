@@ -13,6 +13,15 @@ export class UserController {
     next: NextFunction
   ): Promise<any> {
     try {
+      const token = req.headers.authorization as string;
+      const authenticator = new Authenticator();
+      const authenticationData = authenticator.getData(token);
+      const userId = { id: authenticationData.id };
+
+      if (!userId.id) {
+        res.status(400).send({ message: "Insira um Token Válido" });
+      }
+
       const results = await knex("users");
       return res.json(results);
     } catch (e: any) {
@@ -90,6 +99,15 @@ export class UserController {
         password: req.body.password,
       };
 
+      const token = req.headers.authorization as string;
+      const authenticator = new Authenticator();
+      const authenticationData = authenticator.getData(token);
+      const userId = { id: authenticationData.id };
+
+      if (!userId.id) {
+        res.status(400).send({ message: "Insira um Token Válido" });
+      }
+
       await knex("users")
         .update({
           name: user.name,
@@ -112,6 +130,15 @@ export class UserController {
   ): Promise<any> {
     try {
       const { id } = req.params;
+
+      const token = req.headers.authorization as string;
+      const authenticator = new Authenticator();
+      const authenticationData = authenticator.getData(token);
+      const userId = { id: authenticationData.id };
+
+      if (!userId.id) {
+        res.status(400).send({ message: "Insira um Token Válido" });
+      }
 
       await knex("users").where({ id }).del();
 
