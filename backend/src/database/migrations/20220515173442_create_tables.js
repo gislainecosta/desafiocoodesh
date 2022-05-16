@@ -13,7 +13,7 @@ exports.up = function (knex) {
       table.string('company_name', 255).unique().notNullable()
       table.string('cnpj', 255).unique().notNullable()
       table.text('company_description').unique().notNullable()
-      table.integer('company_admin')
+      table.uuid('company_admin')
         .references('users.id')
         .onDelete('CASCADE')
         .notNullable()
@@ -28,7 +28,7 @@ exports.up = function (knex) {
         .onDelete('CASCADE')
         .notNullable()
 
-      table.integer('admin_id')
+      table.uuid('admin_id')
         .references('users.id')
         .onDelete('CASCADE')
         .notNullable()

@@ -1,8 +1,8 @@
-interface AccountableReq {
+interface UserReq {
   name: string;
   address: string
   phone: string;
 }
 
 
-export { AccountableReq };
+export { UserReq };
