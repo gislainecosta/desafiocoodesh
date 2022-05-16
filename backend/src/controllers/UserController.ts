@@ -13,6 +13,15 @@ export class UserController {
     next: NextFunction
   ): Promise<any> {
     try {
+      const token = req.headers.authorization as string;
+      const authenticator = new Authenticator();
+      const authenticationData = authenticator.getData(token);
+      const userId = { id: authenticationData.id };
+
+      if (!userId.id) {
+        res.status(400).send({ message: "Insira um Token Válido" });
+      }
+
       const results = await knex("users");
       return res.json(results);
     } catch (e: any) {
@@ -80,6 +89,19 @@ export class UserController {
     next: NextFunction
   ): Promise<any> {
     try {
+      if (
+        !req.body.name ||
+        !req.body.email ||
+        !req.body.address ||
+        !req.body.password ||
+        !req.body.phone
+      ) {
+        throw new Error("Invalid input");
+      }
+      if (req.body.email.indexOf("@") === -1) {
+        throw new Error("Invad email address");
+      }
+
       const { id } = req.params;
 
       const user: UserReq = {
@@ -89,6 +111,15 @@ export class UserController {
         phone: req.body.phone,
         password: req.body.password,
       };
+
+      const token = req.headers.authorization as string;
+      const authenticator = new Authenticator();
+      const authenticationData = authenticator.getData(token);
+      const userId = { id: authenticationData.id };
+
+      if (!userId.id) {
+        res.status(400).send({ message: "Insira um Token Válido" });
+      }
 
       await knex("users")
         .update({
@@ -112,6 +143,15 @@ export class UserController {
   ): Promise<any> {
     try {
       const { id } = req.params;
+
+      const token = req.headers.authorization as string;
+      const authenticator = new Authenticator();
+      const authenticationData = authenticator.getData(token);
+      const userId = { id: authenticationData.id };
+
+      if (!userId.id) {
+        res.status(400).send({ message: "Insira um Token Válido" });
+      }
 
       await knex("users").where({ id }).del();
 
