@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import Header from '../../shared/components/Header';
 import * as St from './style';
 import FormCompany from '../../shared/components/FormCompanies';
@@ -5,6 +7,17 @@ import FormCompany from '../../shared/components/FormCompanies';
 import Paper from '@mui/material/Paper';
 
 const Companies = () => {
+  const [openNewCompany, setOpenNewCompany] = useState<boolean>(false)
+ 
+  const handleClickOpen = () => {
+    setOpenNewCompany(true)
+  };
+
+
+  const handleClickClose = () => {
+    setOpenNewCompany(false)
+  };
+
   return (
     <St.Companies>
       <Header />
@@ -23,7 +36,9 @@ const Companies = () => {
         }}
       >
         <St.PageTitle>Empresas</St.PageTitle>
-        <FormCompany />
+        <St.TextAdd onClick={() => setOpenNewCompany(true)}>+</St.TextAdd>
+        
+        <FormCompany isOpen={openNewCompany} handleClose={() => handleClickClose()} />
       </Paper>
       
     </St.Companies>

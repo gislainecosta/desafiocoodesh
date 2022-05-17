@@ -13,7 +13,11 @@ export const Crud = styled.div`
   justify-content: space-around;
   align-items: center;
   padding: 8%;
-  height: 90%
+  height: 90%;
+
+  @media(min-width: 992px) {
+    flex-direction: row;
+  }
 `
 export const CrudSection = styled.section`
   display: flex;
@@ -22,6 +26,11 @@ export const CrudSection = styled.section`
 `
 export const Image = styled.img`
   width: 40vw;
+  cursor: pointer;
+
+  @media(min-width: 992px) {
+    width: 20vw;
+  }
 `
 export const Title = styled.p`
   font-size: 2rem;

@@ -1,18 +1,25 @@
-import { useState, useEffect } from 'react';
 import { useWindowSize } from "react-use-size";
+import { useNavigate } from 'react-router-dom';
 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import AppsIcon from '@mui/icons-material/Apps';
-import MenuIcon from '@mui/icons-material/Menu';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 export default function ButtonAppBar() {
+  const navigateTo = useNavigate()
   const { width } = useWindowSize();
+
+  const userData = localStorage.getItem('token')
+  console.log("Dados do Usuário", userData)
+
+  const logout = () =>{
+    localStorage.removeItem('token')
+    navigateTo('/')
+  }
   
   return (
     <Box 
@@ -23,6 +30,7 @@ export default function ButtonAppBar() {
             size="large"
             color="inherit"
             aria-label="logout"
+            onClick={() => navigateTo('/crud') }
           >
             <AppsIcon />
           </IconButton>
@@ -38,7 +46,7 @@ export default function ButtonAppBar() {
                   textAlign: 'right',
                   paddingRight: '2rem'
                 }}>
-                Olá Gislaine
+                Olá, seja bem-vindo!
               </Typography>
           }
           
@@ -46,6 +54,7 @@ export default function ButtonAppBar() {
             size="large"
             color="inherit"
             aria-label="logout"
+            onClick={logout}
           >
             <ExitToAppIcon />
           </IconButton>

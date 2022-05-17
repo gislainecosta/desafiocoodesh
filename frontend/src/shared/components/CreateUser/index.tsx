@@ -1,5 +1,6 @@
 import { MouseEventHandler, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import * as Mask from '../../utils'
 import axios from 'axios';
 
 import Button from '@mui/material/Button';
@@ -13,48 +14,61 @@ import CloseIcon from '@mui/icons-material/Close';
 
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
-
+import FormAddress from '../FormAdress';
 interface Props {
-  isOpen: boolean,
+  isOpen: boolean
   handleClose: MouseEventHandler
 }
 
 interface State {
+  name: string;
   email: string;
+  address: string;
+  phone: string;
   password: string;
 }
 
-export default function SignIn(props: Props) {
+export default function SignUp(props: Props) {
   const navigateTo = useNavigate()
   const [buttonIsDisabled, setButtonIsDisabled] = useState<boolean>(false);
+  const [addressValue, setAddressValue] = useState<string>("");
   const [alertIsOpen, setAlertIsOpen] = useState<boolean>(false);
   const [values, setValues] = useState<State>({
-    email: '',
-    password: ''
+    name: "",
+    email: "",
+    address: "",
+    phone: "",
+    password: ""
   });
 
-  const handleChange =
-    (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
-      setValues({ ...values, [prop]: event.target.value });
-    };
-  
-
   useEffect(() => {
-    if (values.email !== "" && values.password !== "") {
+    if (
+        values.email !== "" && 
+        values.password !== "" && 
+        values.name !== "" && 
+        values.phone !== "" && 
+        values.address !== ""
+      ) {
       setButtonIsDisabled(false);
     } else {
       setButtonIsDisabled(true);
     }
   }, [values]);
 
-
-  const login = async () => {
+  useEffect(() => {
+    setValues({ ...values, address: addressValue });
+  }, [addressValue]);
+  
+  const signUp = async () => {
     const body = {
+      name: values.name,
       email: values.email,
+      address: values.address,
+      phone: values.phone,
       password: values.password,
     };
     try {
-      const response = await axios.post('http://localhost:3003/users/login', body);
+      const response = await axios.post('http://localhost:3003/users', body);
       console.log(response.data.access_token)
 
       localStorage.setItem("token", response.data.access_token);
@@ -66,10 +80,14 @@ export default function SignIn(props: Props) {
     }
   };
 
+  const handleChange = (name:string, value:any )  => {
+    setValues({ ...values, [name]: value });
+  }
+
   return (
     <Dialog open={props.isOpen}>
       <DialogTitle>
-        Login
+        Novo Usuário
 
         <IconButton
           aria-label="close"
@@ -87,27 +105,57 @@ export default function SignIn(props: Props) {
 
       <DialogContent>
         <TextField
+          required
           autoFocus
           margin="dense"
-          id="name"
-          label="e-mail"
+          id="username"
+          label="Nome de usuário"
+          type="text"
+          fullWidth
+          variant="standard"
+          value={values.name}
+          onChange={(ev) => handleChange('name', Mask.maskOnlyLetters(ev.target.value))}
+        />
+
+        <TextField
+          required
+          autoFocus
+          margin="dense"
+          id="email"
+          label="E-mail"
           type="email"
           fullWidth
           variant="standard"
           value={values.email}
-          onChange={handleChange('email')}
+          onChange={(ev) => handleChange('email', ev.target.value)}
+        />
+        
+        <FormAddress editAddress={setAddressValue}/>
+
+        <TextField
+          required
+          autoFocus
+          margin="dense"
+          id="phone"
+          label="Telefone"
+          type="phone"
+          fullWidth
+          variant="standard"
+          value={values.phone}
+          onChange={(ev) => handleChange('phone', Mask.maskPhone(ev.target.value))}
         />
 
         <TextField
+          required
           autoFocus
           margin="dense"
           id="password"
-          label="senha"
+          label="Insira uma senha"
           type="password"
           fullWidth
           variant="standard"
           value={values.password}
-          onChange={handleChange('password')}
+          onChange={(ev) => handleChange('password', ev.target.value)}
         />
       </DialogContent>
 
@@ -115,9 +163,9 @@ export default function SignIn(props: Props) {
         <Button
           disabled={buttonIsDisabled}
           variant="contained"
-          onClick={login}
+          onClick={signUp}
         >
-          Entrar
+          Enviar
         </Button>
       </DialogActions>
 
