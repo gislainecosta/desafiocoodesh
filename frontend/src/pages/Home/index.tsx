@@ -5,7 +5,7 @@ import Image from '../../images/ecommerce2.png';
 
 import GitImage from '../../images/github.png';
 import SignIn from '../../shared/components/SignIn';
-import SignUp from '../../shared/components/SignUp';
+import SignUp from '../../shared/components/CreateUser';
 
 const Home = () => {
   const [openSignIn, setOpenSignIn] = useState<boolean>(false)

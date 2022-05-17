@@ -9,3 +9,10 @@ export const PageTitle = styled.p`
   width: 100%;
   text-align: center;
 `
+export const TextAdd = styled.p`
+  text-align: right;
+  margin-top: 1rem;
+  font-size: 3rem;
+  width: 100%;
+  cursor: pointer;
+`

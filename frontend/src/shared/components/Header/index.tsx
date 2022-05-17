@@ -13,6 +13,9 @@ export default function ButtonAppBar() {
   const navigateTo = useNavigate()
   const { width } = useWindowSize();
 
+  const userData = localStorage.getItem('token')
+  console.log("Dados do Usuário", userData)
+
   const logout = () =>{
     localStorage.removeItem('token')
     navigateTo('/')
@@ -43,7 +46,7 @@ export default function ButtonAppBar() {
                   textAlign: 'right',
                   paddingRight: '2rem'
                 }}>
-                Olá Gislaine
+                Olá, seja bem-vindo!
               </Typography>
           }
           

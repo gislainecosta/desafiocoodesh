@@ -58,8 +58,6 @@ export default function SignUp(props: Props) {
   useEffect(() => {
     setValues({ ...values, address: addressValue });
   }, [addressValue]);
-
-  console.log("Valores gravados", values)
   
   const signUp = async () => {
     const body = {
@@ -89,7 +87,7 @@ export default function SignUp(props: Props) {
   return (
     <Dialog open={props.isOpen}>
       <DialogTitle>
-        Cadastre-se
+        Novo Usuário
 
         <IconButton
           aria-label="close"
@@ -107,6 +105,7 @@ export default function SignUp(props: Props) {
 
       <DialogContent>
         <TextField
+          required
           autoFocus
           margin="dense"
           id="username"
@@ -119,6 +118,7 @@ export default function SignUp(props: Props) {
         />
 
         <TextField
+          required
           autoFocus
           margin="dense"
           id="email"
@@ -133,6 +133,7 @@ export default function SignUp(props: Props) {
         <FormAddress editAddress={setAddressValue}/>
 
         <TextField
+          required
           autoFocus
           margin="dense"
           id="phone"
@@ -145,6 +146,7 @@ export default function SignUp(props: Props) {
         />
 
         <TextField
+          required
           autoFocus
           margin="dense"
           id="password"
