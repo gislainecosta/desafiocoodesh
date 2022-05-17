@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useWindowSize } from "react-use-size";
+import { BrowserRouter, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -12,7 +13,13 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 export default function ButtonAppBar() {
+  const navigateTo = useNavigate()
   const { width } = useWindowSize();
+
+  const logout = () =>{
+    localStorage.removeItem('token')
+    navigateTo('/')
+  }
   
   return (
     <Box 
@@ -23,6 +30,7 @@ export default function ButtonAppBar() {
             size="large"
             color="inherit"
             aria-label="logout"
+            onClick={() => navigateTo('/crud') }
           >
             <AppsIcon />
           </IconButton>
@@ -46,6 +54,7 @@ export default function ButtonAppBar() {
             size="large"
             color="inherit"
             aria-label="logout"
+            onClick={logout}
           >
             <ExitToAppIcon />
           </IconButton>

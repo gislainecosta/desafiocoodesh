@@ -11,7 +11,7 @@ export const Home = styled.div`
 `
 export const Image = styled.img`
   width: 90vw;
-  margin: 10vh 0 8vh 0;
+  margin: 30% 0 8vh 0;
 `
 export const Header = styled.div`
   width: 100%;

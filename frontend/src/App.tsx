@@ -1,16 +1,14 @@
-import { GlobalStyle } from './shared/themes/globalStyle';
-import { createTheme, Theme, ThemeProvider } from '@mui/material/styles';
-import styled from 'styled-components';
 import './shared/themes/materialStyles.css';
+import { GlobalStyle } from './shared/themes/globalStyle';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import styled from 'styled-components';
 
-import { Routes, Route, Navigate } from 'react-router-dom';
 import Crud from './pages/Crud';
 import Companies from './pages/Companies';
 import Locals from './pages/Locals';
 import Tickets from './pages/Tickets';
 import Home from './pages/Home';
-
-import { BrowserRouter } from 'react-router-dom';
 
 const MaterialTheme = createTheme({
   palette: {
@@ -33,10 +31,6 @@ const MaterialTheme = createTheme({
 
 const routes = [
   {
-    path: '/',
-    component: <Home />
-  },
-  {
     path: '/crud',
     component: <Crud />
   },
@@ -54,6 +48,12 @@ const routes = [
   }
 ];
 
+const PrivateRoute = ({ children, redirectTo}) => {
+  const isAuthenticated = localStorage.getItem('token') != null;
+  console.log('isAuth: ', isAuthenticated);
+  return isAuthenticated ? children : <Navigate to={redirectTo} />
+}
+
 const ContainerApp = styled.div`
   height: 100vh;
   width: 100vw;
@@ -70,12 +70,17 @@ function App() {
 
         <BrowserRouter>
           <Routes>
+            <Route path='/' element={<Home />} /> 
             {
               routes.map(
                 (route) => <Route
                   key={route.path}
                   path={route.path}
-                  element={route.component}
+                  element={
+                    <PrivateRoute redirectTo='/'>
+                      {route.component}
+                    </PrivateRoute>
+                  }
                 />
               )
             }

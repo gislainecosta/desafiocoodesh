@@ -17,7 +17,7 @@ const LoginButton = styled(Button)({
 
 const Home = () => {
   const [openSignIn, setOpenSignIn] = useState<boolean>(false)
-  const [openSignUp, setOpenSignUp] = useState<boolean>(true)
+  const [openSignUp, setOpenSignUp] = useState<boolean>(false)
   
   const handleClickOpen = (type:string) => {
     type === 'signin' ? setOpenSignIn(true) : setOpenSignUp(true);
