@@ -1,49 +1,84 @@
-import styled from 'styled-components';
+import { styled } from '@mui/material/styles';
+import Button from '@mui/material/Button';
+import st from 'styled-components';
 
-export const Home = styled.div`
+export const Home = st.div`
   color: var(--violet-dark);
   text-align: center;
   width: 100%;
   height: 100vh;
-  padding: 4%;
+  padding: 6% 4% 30% 4%;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   background-color: var(--violet-light);
   background-image: linear-gradient(to left top, #760092, #9746ad, #b776c9, #d6a5e4, #f6d5ff);
+
+  @media(min-width: 992px) {
+    overflow: hidden;
+    padding: 1% 2%;
+  }
 `
-export const Image = styled.img`
+export const HomeMain = st.section`
+
+  @media(min-width: 992px) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80vw;
+  }
+`
+export const Image = st.img`
   width: 90vw;
-  margin: 30% 0 8vh 0;
+  margin-bottom: 2rem;
+
+  @media(min-width: 992px) {
+    width: 40vw;
+  }
 `
-export const Header = styled.div`
+export const Header = st.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 `
-export const Text = styled.p`
+export const Text = st.p`
   font-size: 2rem;
   font-weight: bold;
   font-family: 'Kalam', cursive;
+
+  @media(min-width: 992px) {
+   text-align: right;
+   margin-left: 4%
+  }
 `
-export const Icon = styled.img`
+export const Icon = st.img`
   width: 6vw;
+
+  @media(min-width: 992px) {
+    width: 3vw;
+  }
 `
-export const HeaderNav = styled.section`
+export const HeaderNav = st.section`
   justify-content: space-between;
   align-items: center;
-  width: 40vw;
+  width: 44vw;
   display: flex;
+
+  @media(min-width: 992px) {
+    width: 20vw;
+  }
 `
-export const SignUp = styled.button`
+export const SignUp = st.button`
   font-weight: bold;
+  
+  @media(min-width: 992px) {
+    font-size: 22px;
+  }
 `
-export const SignIn = styled.button`
-  background-color: var(--violet-dark);
-  color: var(--violet-light);
-  font-weight: bold;
-  padding: 4% 6%;
-  border-radius: 10px;
-`
-export const Modal = styled.section`
+export const Modal = st.section`
   z-index: 2;
   position: fixed;
   top: 10%;
@@ -52,3 +87,11 @@ export const Modal = styled.section`
   justify-content: right;
   align-items: center;
 `
+export const LoginButton = styled(Button)({
+  textTransform: 'none',
+  fontSize: 12,
+  padding: '4px 16px',
+  ['@media (min-width:780px)']: {
+    fontSize: 24
+  }
+});

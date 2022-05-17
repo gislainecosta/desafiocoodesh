@@ -98,6 +98,9 @@ export default function FormAddress(props: Props) {
         id="number"
         label="Número"
         type="text"
+        sx={{
+          marginRight: '4vw'
+        }}
         variant="standard"
         onChange={(ev) =>  handleChange('number', Mask.maskOnlyNumbers(ev.target.value))}
         value={values.number}
@@ -134,6 +137,9 @@ export default function FormAddress(props: Props) {
         label="Cidade"
         type="text"
         variant="standard"
+        sx={{
+          marginRight: '4vw'
+        }}
         value={values.city}
       />
 

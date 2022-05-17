@@ -1,19 +1,11 @@
 import { useState } from 'react';
 import * as St from './style';
-import { styled } from '@mui/material/styles';
-import Button from '@mui/material/Button';
 
 import Image from '../../images/ecommerce2.png';
 
 import GitImage from '../../images/github.png';
 import SignIn from '../../shared/components/SignIn';
 import SignUp from '../../shared/components/SignUp';
-
-const LoginButton = styled(Button)({
-  textTransform: 'none',
-  fontSize: 14,
-  padding: '2px 2px',
-});
 
 const Home = () => {
   const [openSignIn, setOpenSignIn] = useState<boolean>(false)
@@ -42,18 +34,20 @@ const Home = () => {
             Cadastre-se
           </St.SignUp>
 
-          <LoginButton
+          <St.LoginButton
             variant="contained"
             onClick={() => handleClickOpen('signin')}
           >
             Login
-          </LoginButton>
+          </St.LoginButton>
         </St.HeaderNav>
       </St.Header>
       
-      <St.Image src={Image} alt="Image Home" />
-      
-      <St.Text>Unindo pequenas empresas aos seus clientes</St.Text>
+      <St.HomeMain>
+        <St.Image src={Image} alt="Image Home" />
+        
+        <St.Text>Unindo pequenas empresas aos seus clientes</St.Text>
+      </St.HomeMain>
       
       <St.Modal>
         <SignUp isOpen={openSignUp} handleClose={() => handleClickClose('signup')}/>
